@@ -1,0 +1,73 @@
+{
+  "package_version": "0.1.0",
+  "repository_commit": "TBD at release",
+  "build_date": "2026-06-19",
+  "project": {
+    "copyright": "Copyright (C) 2026 Shimon Ulewicz",
+    "license": "GPL-3.0-only",
+    "license_file": "package-root/App/WASM4Explorer/LICENSES/project_LICENSE.txt"
+  },
+  "wasm4": {
+    "source": "https://github.com/sulewicz/wasm4",
+    "commit": "0ebe62ae6d0fbad9decefa1ddc4fcfba125e6910",
+    "license_file": "package-root/App/WASM4Explorer/LICENSES/wasm4_libretro_LICENSE.txt",
+    "wasm_backend": "wasm3",
+    "wasm3_commit": "dc9fa49340b8d066a479cf36f7412208ff91a0ee"
+  },
+  "onion_validation": {
+    "source": "https://github.com/OnionUI/Onion",
+    "commit_or_release": "07505ea58c7bba698d6b9220ff43946a43cac76b",
+    "retroarch_baseline": "RetroArch 1.15.0 dingux build for miyoomini / miyoomini+; Onion Makefile RA_SUBVERSION=1.22.2-1"
+  },
+  "libretro_core_info": {
+    "source": "https://github.com/libretro/libretro-core-info/blob/master/wasm4_libretro.info",
+    "commit": "796eadd136fa13d13cf783fc21e74c89f89a7177",
+    "sha256": "e6e069d1259c2362da7b1e8b52a7dcd0532f420e34f193fa8257a45a6ebfd5fb"
+  },
+  "toolchain": {
+    "name": "Onion Miyoo Mini Docker toolchain",
+    "image": "aemiii91/miyoomini-toolchain:latest",
+    "image_digest": "sha256:e5123590ad75d27f0f4c91196e3119a255cad45f3ae15243e29a8e0a2ec50132",
+    "compiler": "arm-linux-gnueabihf-gcc 8.3.0",
+    "target": "arm-linux-gnueabihf",
+    "cflags": "-fomit-frame-pointer -ffast-math -march=armv5te -mtune=arm926ej-s -ftree-vectorize -funswitch-loops",
+    "note": "This artifact uses the Onion-supported Miyoo Mini toolchain image and is validated on real OnionOS hardware."
+  },
+  "artifacts": {
+    "core": {
+      "path": "package-root/RetroArch/.retroarch/cores/wasm4_libretro.so",
+      "sha256": "2de4135aa2e465ed9e065c122115539215c759a5502de1d46ee3109ced7fe7fd",
+      "size_bytes": 140896,
+      "elf": "ELF 32-bit LSB shared object, ARM, EABI5, hard-float ABI, dynamically linked, stripped"
+    },
+    "cores_info": {
+      "path": "package-root/RetroArch/.retroarch/cores/wasm4_libretro.info",
+      "sha256": "e6e069d1259c2362da7b1e8b52a7dcd0532f420e34f193fa8257a45a6ebfd5fb",
+      "size_bytes": 960
+    },
+    "info": {
+      "path": "package-root/RetroArch/.retroarch/info/wasm4_libretro.info",
+      "sha256": "e6e069d1259c2362da7b1e8b52a7dcd0532f420e34f193fa8257a45a6ebfd5fb",
+      "size_bytes": 960
+    },
+    "core_info": {
+      "path": "package-root/RetroArch/.retroarch/core_info/wasm4_libretro.info",
+      "sha256": "e6e069d1259c2362da7b1e8b52a7dcd0532f420e34f193fa8257a45a6ebfd5fb",
+      "size_bytes": 960
+    },
+    "build_log": {
+      "path": "build/logs/wasm4_libretro_miyoo_onion_build.log"
+    }
+  },
+  "verification": {
+    "local_build": "passed",
+    "elf_inspection": "passed",
+    "real_hardware_launch": "passed - Tank Wars launches on OnionOS hardware",
+    "playback_pacing": "passed - Tank Wars runs at normal speed with wasm4_audio_type=normal"
+  },
+  "licenses": [
+    "package-root/App/WASM4Explorer/LICENSES/project_LICENSE.txt",
+    "package-root/App/WASM4Explorer/LICENSES/wasm4_libretro_LICENSE.txt",
+    "package-root/App/WASM4Explorer/LICENSES/wasm4_gallery_license.txt"
+  ]
+}

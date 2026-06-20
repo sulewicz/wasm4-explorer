@@ -1,0 +1,3 @@
+wasm4_audio_type = "normal"
+wasm4_pixel_type = "rgb565"
+wasm4_touchscreen_hold_frames = "10"

@@ -1,0 +1,6 @@
+{
+	"label": "WASM-4 Explorer",
+	"icon": "../../Icons/Default/app/wasm4_explorer.png",
+	"launch": "launch.sh",
+	"description": "Browse and install WASM-4 carts"
+}

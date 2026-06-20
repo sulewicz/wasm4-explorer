@@ -1,0 +1,51 @@
+{
+  "package_version": "0.1.0",
+  "repository_commit": "TBD",
+  "project": {
+    "copyright": "Copyright (C) 2026 Shimon Ulewicz",
+    "license": "GPL-3.0-only",
+    "license_file": "package-root/App/WASM4Explorer/LICENSES/project_LICENSE.txt"
+  },
+  "wasm4": {
+    "source": "https://github.com/sulewicz/wasm4",
+    "commit": "TBD",
+    "license_file": "package-root/App/WASM4Explorer/LICENSES/wasm4_libretro_LICENSE.txt",
+    "wasm_backend": "TBD"
+  },
+  "onion_validation": {
+    "source": "https://github.com/OnionUI/Onion",
+    "commit_or_release": "TBD",
+    "retroarch_baseline": "TBD"
+  },
+  "libretro_core_info": {
+    "source": "https://github.com/libretro/libretro-core-info/blob/master/wasm4_libretro.info",
+    "commit": "TBD"
+  },
+  "toolchain": {
+    "name": "TBD",
+    "version_or_image": "TBD"
+  },
+  "artifacts": {
+    "core": {
+      "path": "package-root/RetroArch/.retroarch/cores/wasm4_libretro.so",
+      "sha256": "TBD"
+    },
+    "cores_info": {
+      "path": "package-root/RetroArch/.retroarch/cores/wasm4_libretro.info",
+      "sha256": "TBD"
+    },
+    "info": {
+      "path": "package-root/RetroArch/.retroarch/info/wasm4_libretro.info",
+      "sha256": "TBD"
+    },
+    "core_info": {
+      "path": "package-root/RetroArch/.retroarch/core_info/wasm4_libretro.info",
+      "sha256": "TBD"
+    }
+  },
+  "licenses": [
+    "package-root/App/WASM4Explorer/LICENSES/project_LICENSE.txt",
+    "package-root/App/WASM4Explorer/LICENSES/wasm4_libretro_LICENSE.txt",
+    "package-root/App/WASM4Explorer/LICENSES/wasm4_gallery_license.txt"
+  ]
+}
