@@ -18,7 +18,7 @@ WASM-4 Explorer adds a WASM-4 runtime and a native catalog browser to OnionOS de
    - `Apps -> WASM-4 Explorer`
 5. Open `Apps -> WASM-4 Explorer`.
 
-If you want installed games to appear under `Games -> WASM-4`, run Onion's normal `Refresh ROMs` action after installing games from the Explorer.
+Explorer updates Onion's WASM-4 game list after each install. If `Games -> WASM-4` was already open, leave the game list and open it again.
 
 More detail is available in [docs/INSTALL.md](docs/INSTALL.md) and [docs/USAGE.md](docs/USAGE.md).
 

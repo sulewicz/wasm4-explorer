@@ -33,4 +33,4 @@ To build the install archive yourself instead of downloading a GitHub Release, f
 
 ## Games Menu
 
-Installed games are written to `Roms/WASM4`. To show them in Onion's Games tab, run `Refresh ROMs`, then open `Games -> WASM-4`.
+Installed games are written to `Roms/WASM4`. Explorer updates Onion's WASM-4 game list after each install; if `Games -> WASM-4` was already open, leave the game list and open it again.

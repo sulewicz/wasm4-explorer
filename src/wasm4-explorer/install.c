@@ -8,6 +8,7 @@
 #include <string.h>
 #include <strings.h>
 #include <sys/stat.h>
+#include <sys/types.h>
 #include <sys/wait.h>
 #include <time.h>
 #include <unistd.h>
@@ -1078,6 +1079,54 @@ static int write_miyoogamelist(const char *rom_dir, const char *img_dir,
     return 0;
 }
 
+static void remove_onion_rom_cache(const W4XPathSet *paths)
+{
+    const char *cache_names[] = {"WASM4_cache2.db", "WASM4_cache6.db"};
+    for (size_t i = 0; i < sizeof(cache_names) / sizeof(cache_names[0]); i++) {
+        char cache_path[W4X_PATH_MAX];
+        if (path_join(cache_path, sizeof(cache_path), paths->rom_dir,
+                      cache_names[i]) == 0)
+            unlink(cache_path);
+    }
+}
+
+static void reset_onion_list_window(const W4XPathSet *paths)
+{
+    char reset_script[W4X_PATH_MAX];
+    char onion_romroot[W4X_PATH_MAX];
+
+    if (path_join(reset_script, sizeof(reset_script), paths->sd_root,
+                  ".tmp_update/script/reset_list.sh") != 0 ||
+        path_join(onion_romroot, sizeof(onion_romroot), paths->sd_root,
+                  "Emu/WASM4/../../Roms/WASM4") != 0)
+        return;
+
+    if (!is_file(reset_script))
+        return;
+
+    pid_t pid = fork();
+    if (pid == 0) {
+        execl("/bin/sh", "sh", reset_script, onion_romroot, (char *)NULL);
+        _exit(127);
+    }
+    if (pid < 0) {
+        w4x_log(paths, "failed to fork Onion game-list reset helper");
+        return;
+    }
+
+    int status = 0;
+    if (waitpid(pid, &status, 0) < 0 || !WIFEXITED(status) ||
+        WEXITSTATUS(status) != 0)
+        w4x_log(paths, "Onion game-list reset helper did not complete cleanly");
+}
+
+static void invalidate_onion_game_list(const W4XPathSet *paths)
+{
+    remove_onion_rom_cache(paths);
+    reset_onion_list_window(paths);
+    sync();
+}
+
 static int ensure_install_dirs(const W4XPathSet *paths, char *img_dir,
                                size_t img_dir_size, char *meta_dir,
                                size_t meta_dir_size, char *cache_meta_dir,
@@ -1478,6 +1527,8 @@ int w4x_install_catalog_entry(const W4XPathSet *paths,
         write_installed_index(meta_dir, &meta) != 0 ||
         write_miyoogamelist(paths->rom_dir, img_dir, meta_dir) != 0)
         return -1;
+
+    invalidate_onion_game_list(paths);
 
     copy_string(result->cart_path, sizeof(result->cart_path), cart_path);
     copy_string(result->filename, sizeof(result->filename), meta.installed_filename);

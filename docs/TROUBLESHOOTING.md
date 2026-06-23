@@ -22,7 +22,7 @@ Scroll to the affected games while the device is online. Thumbnails are loaded o
 
 ## A Game Does Not Appear Under Games
 
-Open Explorer and launch the game once, then run `Refresh ROMs`.
+Open Explorer and launch the game once, then leave and reopen `Games -> WASM-4`. If the list stays stale after updating from an older Explorer build, reinstall `Emu -> WASM-4` from Package Manager once to clear Onion's saved WASM-4 list window.
 
 ## Logs
 

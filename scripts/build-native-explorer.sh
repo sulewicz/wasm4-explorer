@@ -35,6 +35,11 @@ case "$mode" in
     ;;
 esac
 
+case "$out_dir" in
+  /*) ;;
+  *) out_dir="$PWD/$out_dir" ;;
+esac
+
 sources=(
   "$repo_dir/src/wasm4-explorer/main.c"
   "$repo_dir/src/wasm4-explorer/paths.c"

@@ -23,7 +23,7 @@ Games are downloaded when launched. Already installed games are reused unless th
 
 Explorer installs games into `Roms/WASM4`, writes artwork into `Roms/WASM4/Imgs`, and updates `Roms/WASM4/miyoogamelist.xml`.
 
-Run Onion's `Refresh ROMs` action if newly installed games do not appear under `Games -> WASM-4`.
+Explorer updates Onion's WASM-4 game list after each install. If `Games -> WASM-4` was already open, leave the game list and open it again.
 
 ## Updating
 
